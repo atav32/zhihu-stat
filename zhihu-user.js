@@ -1,8 +1,9 @@
 var request = require("request");
 var cheerio = require("cheerio");
  
+var username = process.argv[0];
 var user = {};
-request({ uri: "http://www.zhihu.com/people/jixin", }, parseZhihuUser);
+request({ uri: "http://www.zhihu.com/people/" + username, }, parseZhihuUser);
 
 function parseZhihuUser(error, response, body) {
   $ = cheerio.load(body);
