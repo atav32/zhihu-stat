@@ -11,14 +11,14 @@ var request = require("request");
 var cheerio = require("cheerio");
 
 exports.zhihuUser = function (req, res) {
+  var username = req.query.username;
   var user = {};
-  console.log("zhihuUser")
-  request({ uri: "http://www.zhihu.com/people/jixin", }, parseZhihuUser);
+  request({ uri: "http://www.zhihu.com/people/"+username, }, parseZhihuUser);
 
   function parseZhihuUser(error, response, body) {
     console.log("parseZhihuUser");
     $ = cheerio.load(body);
-    user["name"] = $("span.name").text();
+    user["name"] = $("div.title-section > span.name").text();
     user["location"] = $("span.location").attr('title');
     var followDiv = $("div.zm-profile-side-following > a > strong");
     var followList = serialize($, followDiv);

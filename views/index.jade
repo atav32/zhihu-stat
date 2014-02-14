@@ -6,7 +6,7 @@ block body
       .jumbotron  
         h1 知员
         form(ng-submit='getZhihuUser()')
-          input#search-bar.form-control(type='text', placeholder='搜索知乎用户') 
+          input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户') 
           input#search-button.btn.btn-primary(type='submit', value='搜索')
 
   div#footer
