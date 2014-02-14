@@ -1,12 +1,6 @@
 /*
  * Serve JSON to our AngularJS client
  */
-exports.name = function (req, res) {
-  res.json({
-  	name: 'Brian'
-  });
-};
-
 var request = require("request");
 var cheerio = require("cheerio");
 
