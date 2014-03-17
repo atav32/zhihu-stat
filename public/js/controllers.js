@@ -10,5 +10,6 @@ function UserSearch($scope, $http) {
         }).error(function(data, status, headers, config) {
             console.log("Error");
         });
+        return $scope.user;
     }
 }

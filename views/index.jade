@@ -4,10 +4,31 @@ block body
   .container      
     div(ng-controller='UserSearch')
       .jumbotron  
-        h1 知员
+        h1 知乎 Stat
         form(ng-submit='getZhihuUser()')
           input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户') 
           input#search-button.btn.btn-primary(type='submit', value='搜索')
+        div#zhihuUser
+          span#name
+            p Name: {{user.name}}
+          span#location
+            p Location: {{user.location}}
+          span#Following
+            p Following: {{user.following}}
+          span#follower
+            p Followers: {{user.followers}}
+          span#questions
+            p Question: {{user.questions}}
+          span#answers
+            p Answers: {{user.answers}}
+          span#essays
+            p Essays: {{user.essays}}
+          span#bookmarks
+            p Bookmarks: {{user.bookmarks}}
+          span#edits
+            p Edits: {{user.edits}}
+          span#profileViews
+            p Profile Views: {{user.profileViews}}
 
   div#footer
     .container
