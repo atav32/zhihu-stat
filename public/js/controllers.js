@@ -4,10 +4,14 @@
 function UserSearch($scope, $http) {
     $scope.progressDisplay = "false"
     $scope.resultDisplay = "false"
+    $scope.progress = 0;
     console.log($scope);
+    console.log(location.pathname);
     $scope.getZhihuUser = function() {
+        $scope.progress = Math.random() * 40;
         $scope.progressDisplay = "true"
-        $http({method: 'GET', url: '/api/zhihuUser?username='+$scope.username}).success(function(data, status, headers, config) {
+        $http({method: 'GET', url: location.pathname + 'api/zhihuUser?username=' + $scope.username}).success(function(data, status, headers, config) {
+            $scope.progress = 100;
             $scope.user = data;
             console.log($scope.user);
             $scope.progressDisplay = "false"
