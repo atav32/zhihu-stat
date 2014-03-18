@@ -8,27 +8,20 @@ block body
         form(ng-submit='getZhihuUser()')
           input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户') 
           input#search-button.btn.btn-primary(type='submit', value='搜索')
-        div#zhihuUser
-          span#name
-            p Name: {{user.name}}
-          span#location
-            p Location: {{user.location}}
-          span#Following
-            p Following: {{user.following}}
-          span#follower
-            p Followers: {{user.followers}}
-          span#questions
-            p Question: {{user.questions}}
-          span#answers
-            p Answers: {{user.answers}}
-          span#essays
-            p Essays: {{user.essays}}
-          span#bookmarks
-            p Bookmarks: {{user.bookmarks}}
-          span#edits
-            p Edits: {{user.edits}}
-          span#profileViews
-            p Profile Views: {{user.profileViews}}
+        div.progress.progress-striped.active.hide
+          div.progress-bar(role='progressbar', aria-valuenow='30', aria-valuemin='0', ariavaluemax='100', style='width:60%;')
+            span.sr-only % complete
+        div#zhihuUser.hide
+          h4#name Name: {{user.name}}
+          h4#location Location: {{user.location}}
+          h4#Following Following: {{user.following}}
+          h4#follower Followers: {{user.followers}}
+          h4#questions Question: {{user.questions}}
+          h4#answers Answers: {{user.answers}}
+          h4#essays Essays: {{user.essays}}
+          h4#bookmarks Bookmarks: {{user.bookmarks}}
+          h4#edits Edits: {{user.edits}}
+          h4#profileViews Profile Views: {{user.profileViews}}
 
   div#footer
     .container
