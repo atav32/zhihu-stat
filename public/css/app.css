@@ -14,6 +14,14 @@ body {
     width: 14%;
 }
 
+#waiting {
+    margin-top: 10px
+}
+
+#zhihu-user {
+    margin-top: 10px
+}
+
 .container {
     margin-left: auto;
     margin-right: auto;

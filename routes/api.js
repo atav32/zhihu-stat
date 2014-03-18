@@ -25,7 +25,7 @@ exports.zhihuUser = function (req, res) {
     user["essays"] = userStatsList[2];
     user["bookmarks"] = userStatsList[3];
     user["edits"] = userStatsList[4];
-    user["profileViews"] = $("div.zm-side-section-inner > span > strong").text(); 
+    user["views"] = $("div.zm-side-section-inner > span > strong").text(); 
  
     console.log(user);
     res.json(user);

@@ -5,13 +5,13 @@ block body
     div(ng-controller='UserSearch')
       .jumbotron  
         h1 知乎 Stat
-        form(ng-submit='getZhihuUser()')
+        form.form-inline(ng-submit='getZhihuUser()')
           input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户') 
           input#search-button.btn.btn-primary(type='submit', value='搜索')
-        div.progress.progress-striped.active.hide
+        div#waiting.progress.progress-striped.active(ng-class="{true:'collapse in', false:'collapse'}[progressDisplay]")
           div.progress-bar(role='progressbar', aria-valuenow='30', aria-valuemin='0', ariavaluemax='100', style='width:60%;')
             span.sr-only % complete
-        div#zhihuUser.hide
+        div#zhihu-user(ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]")
           h4#name Name: {{user.name}}
           h4#location Location: {{user.location}}
           h4#Following Following: {{user.following}}
@@ -21,7 +21,7 @@ block body
           h4#essays Essays: {{user.essays}}
           h4#bookmarks Bookmarks: {{user.bookmarks}}
           h4#edits Edits: {{user.edits}}
-          h4#profileViews Profile Views: {{user.profileViews}}
+          h4#profileViews Profile Views: {{user.views}}
 
   div#footer
     .container
