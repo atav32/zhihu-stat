@@ -11,4 +11,4 @@ http://jazzberrygames.com:3000/
 http://jazzberrygames.com:3000/api/zhihuUser?username=jixin
 
 ## Structure
-NodeJS + Express > Angular + Bootstrap
+NodeJS + Express > AngularJS + Bootstrap
