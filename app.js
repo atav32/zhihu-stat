@@ -18,13 +18,12 @@ var app = module.exports = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
+app.use(express.urlencoded());
 app.use(express.methodOverride());
-//app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static('./public'));
+app.use(express.static(path.join(__dirname, '/public')));
 app.use(app.router);
 
 // development only
@@ -36,7 +35,6 @@ if (app.get('env') === 'development') {
 if (app.get('env') === 'production') {
   // TODO
 }; 
-
 
 
 // Routes

@@ -8,10 +8,9 @@ function UserSearch($scope, $http) {
     console.log($scope);
     console.log(location.pathname);
     $scope.getZhihuUser = function() {
-        $scope.progress = Math.random() * 40;
+        $scope.progress = 100;
         $scope.progressDisplay = "true"
         $http({method: 'GET', url: location.pathname + 'api/zhihuUser?username=' + $scope.username}).success(function(data, status, headers, config) {
-            $scope.progress = 100;
             $scope.user = data;
             console.log($scope.user);
             $scope.progressDisplay = "false"
