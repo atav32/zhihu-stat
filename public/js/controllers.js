@@ -1,11 +1,10 @@
 'use strict';
 
 /* Controllers */
-function UserSearch($scope, $http) {
+myApp.controller('UserSearch', function($scope, $http) {
     $scope.progressDisplay = "false"
     $scope.resultDisplay = "false"
     $scope.username = "brianz"
-    $scope.progress = 0;
     console.log($scope);
     console.log(location.pathname);
     $scope.getZhihuUser = function() {
@@ -26,4 +25,4 @@ function UserSearch($scope, $http) {
         });
         return $scope.user;
     }
-}
+})
