@@ -15,11 +15,16 @@ body {
 }
 
 #waiting {
-    margin-top: 10px
+    margin-top: 10px;
 }
 
 #zhihu-user {
-    margin-top: 10px
+    margin-top: 10px;
+}
+
+#avatar {
+    width: 100px;
+    height: 100px;
 }
 
 .container {
@@ -31,3 +36,4 @@ body {
 .social-icon {
     width: 4%;
 }
+

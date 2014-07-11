@@ -3,12 +3,15 @@
  * Module dependencies
  */
 
-var express = require('express'),
-  routes = require('./routes'),
-  api = require('./routes/api'),
-  http = require('http'),
-  path = require('path');
-
+var express = require('express');
+var routes = require('./routes');
+var api = require('./routes/api');
+var http = require('http');
+var path = require('path');
+var mongo = require('mongodb');
+var monk = require('monk');
+var db = monk('localhost:27017/zhihuUsers');
+var username = db.get('usernames');
 
 var app = module.exports = express();
 
