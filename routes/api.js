@@ -7,7 +7,9 @@ var cheerio = require("cheerio");
 exports.zhihuUser = function (req, res) {
   var username = req.query.username;
   var user = {};
-  request({ uri: "http://www.zhihu.com/people/"+username, }, parseZhihuUser);
+  var requestUrl = "http://www.zhihu.com/search?q={}&type=people".format(username)
+  console.log(requestUrl)
+  request({ uri: requestUrl }, parseZhihuUser);
 
   function parseZhihuUser(error, response, body) {
     console.log("parseZhihuUser");

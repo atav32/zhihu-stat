@@ -9,6 +9,7 @@
         "cheerio": "*",
         "mongodb": "*",
         "monk": "*",
-        "angular-cache": "*"
+        "angular-cache": "*",
+        "string-format": "*"
 	}
 }
