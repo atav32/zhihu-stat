@@ -11,7 +11,11 @@ function UserSearch($scope, $http) {
     $scope.getZhihuUser = function() {
         $scope.progress = 100;
         $scope.progressDisplay = "true"
-        $http({method: 'GET', url: location.pathname + 'api/zhihuUser?username=' + $scope.username}).success(function(data, status, headers, config) {
+        $http({
+            method: 'GET', 
+            url: location.pathname + 'api/zhihuUser?username=' + $scope.username,
+            cache: true
+        }).success(function(data, status, headers, config) {
             $scope.user = data;
             console.log($scope.user);
             $scope.progressDisplay = "false"
