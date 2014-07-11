@@ -7,7 +7,7 @@ Retrieves a Zhihu user's profile for basic stats
 ## Structure
 NodeJS + Express ⇄ AngularJS + Bootstrap
 
-## Todo
+## ToDo
 * Return multiple results in a grid
 * Cache results
 * Map geolocation
