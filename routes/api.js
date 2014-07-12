@@ -6,31 +6,38 @@ var cheerio = require("cheerio");
 
 exports.zhihuUser = function (req, res) {
   var username = req.query.username;
-  var user = {};
   var requestUrl = "http://www.zhihu.com/search?q={}&type=people".format(username)
   console.log(requestUrl)
-  request({ uri: requestUrl }, parseZhihuUser);
+  request({ uri: requestUrl }, parseUserSearchPage);
 
-  function parseZhihuUser(error, response, body) {
+  function parseUserSearchPage(error, response, body) {
     console.log("parseZhihuUser");
+    var users = []
     $ = cheerio.load(body);
-    user["name"] = $("div.title-section > span.name").text();
-    user["location"] = $("span.location").attr('title');
-    var followDiv = $("div.zm-profile-side-following > a > strong");
-    var followList = serialize($, followDiv);
-    user["following"] = followList[0];
-    user["followers"] = followList[1];
-    var userStatsDiv = $("div.profile-navbar > a.item > span.num");
-    var userStatsList = serialize($, userStatsDiv);
-    user["questions"] = userStatsList[0];
-    user["answers"] = userStatsList[1];
-    user["essays"] = userStatsList[2];
-    user["bookmarks"] = userStatsList[3];
-    user["edits"] = userStatsList[4];
-    user["views"] = $("div.zm-side-section-inner > span > strong").text(); 
+    $("div.user").each(parseZhihuUser)
  
-    console.log(user);
-    res.json(user);
+    res.json(users);
+
+    function parseZhihuUser() {
+        var user = {}
+        /*
+        user["name"] = $("div.title-section > span.name").text();
+        user["location"] = $("span.location").attr('title');
+        var followDiv = $("div.zm-profile-side-following > a > strong");
+        var followList = serialize($, followDiv);
+        user["following"] = followList[0];
+        user["followers"] = followList[1];
+        var userStatsDiv = $("div.profile-navbar > a.item > span.num");
+        var userStatsList = serialize($, userStatsDiv);
+        user["questions"] = userStatsList[0];
+        user["answers"] = userStatsList[1];
+        user["essays"] = userStatsList[2];
+        user["bookmarks"] = userStatsList[3];
+        user["edits"] = userStatsList[4];
+        user["views"] = $("div.zm-side-section-inner > span > strong").text(); 
+        */
+        console.log($("a.user-name", this).text());
+    }
   }
 
   function serialize($, object) {
