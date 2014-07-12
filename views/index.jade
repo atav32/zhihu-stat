@@ -11,7 +11,7 @@ block body
         div#waiting.progress.progress-striped.active(ng-class="{true:'collapse in', false:'collapse'}[progressDisplay]")
           div.progress-bar(role='progressbar', aria-valuenow='{{progress}}', aria-valuemin='0', ariavaluemax='100', style='width:{{progress}}%;')
             span.sr-only % complete
-        div#zhihu-user(ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]")
+        div#zhihu-user(ng-repeat="user in users", ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]")
           h4#name Name: {{user.name}}
           h4#location Location: {{user.location}}
           h4#Following Following: {{user.following}}
