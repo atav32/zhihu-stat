@@ -20,24 +20,17 @@ exports.zhihuUser = function (req, res) {
 
     function parseZhihuUser() {
         var user = {}
-        /*
-        user["name"] = $("div.title-section > span.name").text();
-        user["location"] = $("span.location").attr('title');
-        var followDiv = $("div.zm-profile-side-following > a > strong");
-        var followList = serialize($, followDiv);
-        user["following"] = followList[0];
-        user["followers"] = followList[1];
-        var userStatsDiv = $("div.profile-navbar > a.item > span.num");
-        var userStatsList = serialize($, userStatsDiv);
-        user["questions"] = userStatsList[0];
-        user["answers"] = userStatsList[1];
-        user["essays"] = userStatsList[2];
-        user["bookmarks"] = userStatsList[3];
-        user["edits"] = userStatsList[4];
-        user["views"] = $("div.zm-side-section-inner > span > strong").text(); 
-        */
-        console.log($("a.user-name", this).text());
+        user["name"] = $("a.user-name", this).text();
+        user["bio"] = $("div.user-bio", this).text();
+        user["answers"] = extractNumber($("a.answer", this).text());
+        user["followers"] = extractNumber($("a.follow", this).text());
+        user["profileUrl"] = "http://www.zhihu.com" + $("a.user-name", this).attr("href");
+        users.push(user)
     }
+  }
+
+  function extractNumber(string) {
+      return string.replace(/[^0-9]/g, '');
   }
 
   function serialize($, object) {
