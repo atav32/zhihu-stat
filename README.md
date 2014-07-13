@@ -2,7 +2,7 @@
 知乎 Stat
 ==========
 
-Retrieves a Zhihu user's profile for basic stats
+Searches for [Zhihu/知乎](http://www.zhihu.com/explore) users and scrapes basic stats about each user.
 
 ## Installation and Deployment
 * Clone the repo
