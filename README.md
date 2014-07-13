@@ -1,8 +1,10 @@
 ==========
-知乎 Stat
+知乎 Stats
 ==========
 
 Searches for [Zhihu/知乎](http://www.zhihu.com/explore) users and scrapes basic stats about each user.
+
+![screenshot](http://i.imgur.com/6xFHvs4.png)
 
 ## Installation and Deployment
 * Clone the repo
