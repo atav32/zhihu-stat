@@ -20,7 +20,7 @@ NodeJS + Express ⇄ AngularJS + Bootstrap
 * ~~Return multiple results in a grid~~
 * Cache results
 * Map geolocation
-* Add a 知乎 Zhihu icon & link to the footer
+* ~~Add a 知乎 Zhihu icon & link to the header~~
 * Add a favicon
 
 ## Background
