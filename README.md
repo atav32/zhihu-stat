@@ -22,5 +22,3 @@ NodeJS + Express ⇄ AngularJS + Bootstrap
 * Map geolocation
 * ~~Add a 知乎 Zhihu icon & link to the header~~
 * Add a favicon
-
-## Background
