@@ -2,16 +2,24 @@ extends layout
 
 block body
   .container      
-    div(ng-controller='UserSearch')
-      .jumbotron  
+    .header
+        span#github.pull-right.icon
+          a(href="https://github.com/tangerinewhite32/zhihu-stat") 
+            img.social-icon(src="http://i.imgur.com/vYMRcjU.png", alt="Github: Zhihu-Stat")
+        span#twitter.pull-right.icon
+          a(href="https://twitter.com/atav32") 
+            img.social-icon(src="http://i.imgur.com/HHwWbWk.png", alt="Twitter: @atav32")
+  .container
+    .jumbotron  
+      div(ng-controller='UserSearch')
         h1 知乎 Zhihu Stats
         form.form-inline(ng-submit='getZhihuUser()')
           input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户 / Search for a Zhihu username') 
-          input#search-button.btn.btn-primary(type='submit', value='Search / 搜索')
+          input#search-button.btn.btn-primary(type='submit', value='搜索')
         div#waiting.progress.progress-striped.active(ng-class="{true:'collapse in', false:'collapse'}[progressDisplay]")
           div.progress-bar(role='progressbar', aria-valuenow='{{progress}}', aria-valuemin='0', ariavaluemax='100', style='width:{{progress}}%;')
             span.sr-only % complete
-        div#zhihu-user(ng-repeat="user in users", ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]")
+        div#zhihu-user(ng-repeat="user in users", ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]", class="col-sm-4")
           h4#name Name: {{user.name}}
           h4#location Location: {{user.location}}
           h4#Following Following: {{user.following}}
@@ -25,12 +33,6 @@ block body
 
   div#footer
     .container
-      span#github
-        a(href="https://github.com/tangerinewhite32/zhihu-stat") 
-          img.social-icon(src="http://i.imgur.com/vYMRcjU.png", alt="Github: Zhihu-Stat")
-      span#twitter
-        a(href="https://twitter.com/atav32") 
-          img.social-icon(src="http://i.imgur.com/HHwWbWk.png", alt="Twitter: @atav32")
 
   script(src='js/lib/angular/angular.js')
   script(src='js/lib/angular/angular-route.js')

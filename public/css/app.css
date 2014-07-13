@@ -12,6 +12,11 @@ body {
 
 #search-button {
     width: 14%;
+    background-image: url(http://i.imgur.com/CRbmN8W.png);
+    background-repeat: no-repeat;
+    background-position: 12px;
+    padding-left: 32px;
+    vertical-align: middle;
 }
 
 #waiting {
@@ -34,6 +39,7 @@ body {
 }
 
 .social-icon {
-    width: 4%;
+    width: 30px;
+    margin-left: 5px;
+    margin-bottom: 10px;
 }
-
