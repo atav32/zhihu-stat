@@ -30,7 +30,7 @@ exports.zhihuUser = function (req, res) {
   }
 
   function extractNumber(string) {
-      return string.replace(/[^0-9]/g, '');
+      return parseInt(string.replace(/[^0-9]/g, ''));
   }
 
   function serialize($, object) {

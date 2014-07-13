@@ -3,12 +3,15 @@ extends layout
 block body
   .container      
     .header
-        span#github.pull-right.icon
-          a(href="https://github.com/tangerinewhite32/zhihu-stat") 
-            img.social-icon(src="http://i.imgur.com/vYMRcjU.png", alt="Github: Zhihu-Stat")
         span#twitter.pull-right.icon
           a(href="https://twitter.com/atav32") 
             img.social-icon(src="http://i.imgur.com/HHwWbWk.png", alt="Twitter: @atav32")
+        span#github.pull-right.icon
+          a(href="https://github.com/tangerinewhite32/zhihu-stat") 
+            img.social-icon(src="http://i.imgur.com/vYMRcjU.png", alt="Github: Zhihu-Stat")
+        span#zhihu.pull-right.icon
+          a(href="http://www.zhihu.com/people/brianz") 
+            img.social-icon(src="http://i.imgur.com/cYenTo0.png", alt="Zhihu: Brian")
   .container
       div(ng-controller='UserSearch')#search-controller
         h1#title 知乎 Zhihu Stats
@@ -19,7 +22,7 @@ block body
           div.progress-bar(role='progressbar', aria-valuenow='{{progress}}', aria-valuemin='0', ariavaluemax='100', style='width:{{progress}}%;')
             span.sr-only % complete
         div#search-results
-          div#zhihu-user(ng-repeat="user in users", ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]", class="col-sm-4")
+          div#zhihu-user(ng-repeat="user in users | orderBy:'followers':true", ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]", class="col-sm-4")
             a(href="{{user.profileUrl}}")
               h4#name{{user.name}}
             h5#bio Bio: {{user.bio}}
