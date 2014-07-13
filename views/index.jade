@@ -16,7 +16,7 @@ block body
       div(ng-controller='UserSearch')#search-controller
         h1#title 知乎 Zhihu Stats
         form.form-inline(ng-submit='getZhihuUser()')
-          input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户 / Search for a Zhihu username')(autofocus)
+          input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户 / Search for a Zhihu username')(ng-minlength=1)(required)(autofocus)
           input#search-button.btn.btn-primary(type='submit', value='搜索')
         div#waiting.progress.progress-striped.active(ng-class="{true:'collapse in', false:'collapse'}[progressDisplay]")
           div.progress-bar(role='progressbar', aria-valuenow='{{progress}}', aria-valuemin='0', ariavaluemax='100', style='width:{{progress}}%;')
