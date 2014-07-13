@@ -6,29 +6,31 @@ var cheerio = require("cheerio");
 
 exports.zhihuUser = function (req, res) {
   var username = req.query.username;
-  var user = {};
-  request({ uri: "http://www.zhihu.com/people/"+username, }, parseZhihuUser);
+  var requestUrl = "http://www.zhihu.com/search?q={}&type=people".format(username)
+  console.log(requestUrl)
+  request({ uri: requestUrl }, parseUserSearchPage);
 
-  function parseZhihuUser(error, response, body) {
+  function parseUserSearchPage(error, response, body) {
     console.log("parseZhihuUser");
+    var users = []
     $ = cheerio.load(body);
-    user["name"] = $("div.title-section > span.name").text();
-    user["location"] = $("span.location").attr('title');
-    var followDiv = $("div.zm-profile-side-following > a > strong");
-    var followList = serialize($, followDiv);
-    user["following"] = followList[0];
-    user["followers"] = followList[1];
-    var userStatsDiv = $("div.profile-navbar > a.item > span.num");
-    var userStatsList = serialize($, userStatsDiv);
-    user["questions"] = userStatsList[0];
-    user["answers"] = userStatsList[1];
-    user["essays"] = userStatsList[2];
-    user["bookmarks"] = userStatsList[3];
-    user["edits"] = userStatsList[4];
-    user["views"] = $("div.zm-side-section-inner > span > strong").text(); 
+    $("div.user").each(parseZhihuUser)
  
-    console.log(user);
-    res.json(user);
+    res.json(users);
+
+    function parseZhihuUser() {
+        var user = {}
+        user["name"] = $("a.user-name", this).text();
+        user["bio"] = $("div.user-bio", this).text();
+        user["answers"] = extractNumber($("a.answer", this).text());
+        user["followers"] = extractNumber($("a.follow", this).text());
+        user["profileUrl"] = "http://www.zhihu.com" + $("a.user-name", this).attr("href");
+        users.push(user)
+    }
+  }
+
+  function extractNumber(string) {
+      return string.replace(/[^0-9]/g, '');
   }
 
   function serialize($, object) {

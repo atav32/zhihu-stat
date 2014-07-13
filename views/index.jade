@@ -2,35 +2,32 @@ extends layout
 
 block body
   .container      
-    div(ng-controller='UserSearch')
-      .jumbotron  
-        h1 知乎 Zhihu Stats
+    .header
+        span#github.pull-right.icon
+          a(href="https://github.com/tangerinewhite32/zhihu-stat") 
+            img.social-icon(src="http://i.imgur.com/vYMRcjU.png", alt="Github: Zhihu-Stat")
+        span#twitter.pull-right.icon
+          a(href="https://twitter.com/atav32") 
+            img.social-icon(src="http://i.imgur.com/HHwWbWk.png", alt="Twitter: @atav32")
+  .container
+      div(ng-controller='UserSearch')#search-controller
+        h1#title 知乎 Zhihu Stats
         form.form-inline(ng-submit='getZhihuUser()')
-          input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户 / Search for a Zhihu username') 
-          input#search-button.btn.btn-primary(type='submit', value='Search / 搜索')
+          input#search-bar.form-control(ng-model='username', type='text', placeholder='搜索知乎用户 / Search for a Zhihu username')(autofocus)
+          input#search-button.btn.btn-primary(type='submit', value='搜索')
         div#waiting.progress.progress-striped.active(ng-class="{true:'collapse in', false:'collapse'}[progressDisplay]")
           div.progress-bar(role='progressbar', aria-valuenow='{{progress}}', aria-valuemin='0', ariavaluemax='100', style='width:{{progress}}%;')
             span.sr-only % complete
-        div#zhihu-user(ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]")
-          h4#name Name: {{user.name}}
-          h4#location Location: {{user.location}}
-          h4#Following Following: {{user.following}}
-          h4#follower Followers: {{user.followers}}
-          h4#questions Question: {{user.questions}}
-          h4#answers Answers: {{user.answers}}
-          h4#essays Essays: {{user.essays}}
-          h4#bookmarks Bookmarks: {{user.bookmarks}}
-          h4#edits Edits: {{user.edits}}
-          h4#profileViews Profile Views: {{user.views}}
+        div#search-results
+          div#zhihu-user(ng-repeat="user in users", ng-class="{true:'collapse in', false:'collapse'}[resultDisplay]", class="col-sm-4")
+            a(href="{{user.profileUrl}}")
+              h4#name{{user.name}}
+            h5#bio Bio: {{user.bio}}
+            h5#follower Followers: {{user.followers}}
+            h5#answers Answers: {{user.answers}}
 
   div#footer
     .container
-      span#github
-        a(href="https://github.com/tangerinewhite32/zhihu-stat") 
-          img.social-icon(src="http://i.imgur.com/vYMRcjU.png", alt="Github: Zhihu-Stat")
-      span#twitter
-        a(href="https://twitter.com/atav32") 
-          img.social-icon(src="http://i.imgur.com/HHwWbWk.png", alt="Twitter: @atav32")
 
   script(src='js/lib/angular/angular.js')
   script(src='js/lib/angular/angular-route.js')

@@ -10,6 +10,7 @@ var http = require('http');
 var path = require('path');
 var mongo = require('mongodb');
 var monk = require('monk');
+var stringFormat = require('string-format');
 var db = monk('localhost:27017/zhihuUsers');
 var username = db.get('usernames');
 
@@ -20,7 +21,7 @@ var app = module.exports = express();
 */
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3232);
 app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'jade');
 app.use(express.logger('dev'));
