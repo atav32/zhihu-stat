@@ -1,7 +1,11 @@
 /* app css stylesheet */
 
-body {
-  padding-top:70px;
+#search-controller {
+    margin-bottom: 30px;
+}
+
+#title {
+    font-size: 48pt !important;
 }
 
 #search-bar {
@@ -12,14 +16,24 @@ body {
 
 #search-button {
     width: 14%;
+    background-image: url(http://i.imgur.com/CRbmN8W.png);
+    background-repeat: no-repeat;
+    background-position: 25%;
+    padding-left: 4%;
+    vertical-align: middle;
 }
 
 #waiting {
-    margin-top: 10px;
+    margin-top: 20px;
+}
+
+#search-results {
+    margin-top: 20px;
 }
 
 #zhihu-user {
     margin-top: 10px;
+    min-height: 150px;
 }
 
 #avatar {
@@ -33,7 +47,12 @@ body {
     max-width: 960px;
 }
 
-.social-icon {
-    width: 4%;
+.header {
+    margin-top: 20px;
 }
 
+.social-icon {
+    width: 30px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}

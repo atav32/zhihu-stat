@@ -10,6 +10,7 @@ var http = require('http');
 var path = require('path');
 var mongo = require('mongodb');
 var monk = require('monk');
+var stringFormat = require('string-format');
 var db = monk('localhost:27017/zhihuUsers');
 var username = db.get('usernames');
 
